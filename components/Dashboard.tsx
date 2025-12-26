@@ -231,11 +231,11 @@ export function Dashboard() {
           <CardContent className="p-4 md:p-6">
             <div className="space-y-3">
               {users.map((user: { id: React.Key | null | undefined; profilePicture: any; name: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | null | undefined; role: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | null | undefined; presenceStatus: string; }) => (
-                <div key={user.id} className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-gray-50 to-blue-50 hover:from-blue-50 hover:to-cyan-50 transition-all">
+                <div key={user.id} className="flex items-center justify-between p-3 rounded-xl bg-linear-to-r from-gray-50 to-blue-50 hover:from-blue-50 hover:to-cyan-50 transition-all">
                   <div className="flex items-center gap-3">
                     <Avatar className="size-10 ring-2 ring-white">
                       <AvatarImage src={user.profilePicture} />
-                      <AvatarFallback className="bg-gradient-to-br from-blue-500 to-cyan-500 text-white">
+                      <AvatarFallback className="bg-linear-to-br from-blue-500 to-cyan-500 text-white">
                         {user.name.charAt(0)}
                       </AvatarFallback>
                     </Avatar>

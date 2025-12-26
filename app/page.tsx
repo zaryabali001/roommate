@@ -1,20 +1,6 @@
 "use client";
 
 import { useState } from 'react';
-// import { AppProvider, useApp } from './context/AppContext';
-// import { Login } from './components/Login';
-// import { Dashboard } from './components/Dashboard';
-// import { TodosPage } from './components/TodosPage';
-// import { CleaningDuty } from './components/CleaningDuty';
-// import { ExpensesPage } from './components/ExpensesPage';
-// import { ShoppingList } from './components/ShoppingList';
-// import { Profile } from './components/Profile';
-// import { MorePage } from './components/MorePage';
-// import { GroupManagement } from './components/GroupManagement';
-// import { Button } from './components/ui/button';
-// import { Avatar, AvatarFallback, AvatarImage } from './components/ui/avatar';
-// import { Badge } from './components/ui/badge';
-// import { Toaster } from './components/ui/sonner';
 import { 
   Home,
   CheckSquare,
@@ -33,6 +19,15 @@ import { ShoppingList } from '@/components/ShoppingList';
 import { GroupManagement } from '@/components/GroupManagement';
 import { Profile } from '@/components/Profile';
 import { MorePage } from '@/components/MorePage';
+import { TodosPage } from '@/components/TodosPage';
+import { ExpensesPage } from '@/components/ExpensesPage';
+import { Login } from '@/components/Login';
+import { useApp } from '@/context/AppContext';
+import { Button } from '@/components/ui/button';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
+import { Toaster } from 'sonner';
+import { AppProvider } from '@/context/AppContext';
 
 type Page = 'dashboard' | 'todos' | 'cleaning' | 'expenses' | 'shopping' | 'group' | 'profile' | 'more';
 
@@ -81,12 +76,12 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100">
       {/* Mobile Header */}
       <div className="lg:hidden bg-white border-b sticky top-0 z-40 shadow-sm">
         <div className="flex items-center justify-between p-4">
           <div className="flex items-center gap-3">
-            <div className="bg-gradient-to-br from-indigo-600 to-purple-600 p-2.5 rounded-xl shadow-lg">
+            <div className="bg-linear-to-br from-indigo-600 to-purple-600 p-2.5 rounded-xl shadow-lg">
               <Home className="size-5 text-white" />
             </div>
             <div>
@@ -111,7 +106,7 @@ function AppContent() {
           <div className="p-6">
             {/* Logo */}
             <div className="flex items-center gap-3 mb-8">
-              <div className="bg-gradient-to-br from-indigo-600 to-purple-600 p-3 rounded-2xl shadow-lg">
+              <div className="bg-linear-to-br from-indigo-600 to-purple-600 p-3 rounded-2xl shadow-lg">
                 <Home className="size-7 text-white" />
               </div>
               <div>
@@ -121,7 +116,7 @@ function AppContent() {
             </div>
 
             {/* User Info */}
-            <div className="relative overflow-hidden mb-6 p-4 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-lg text-white">
+            <div className="relative overflow-hidden mb-6 p-4 bg-linear-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-lg text-white">
               <div className="absolute top-0 right-0 -mt-2 -mr-2 size-20 bg-white/10 rounded-full blur-2xl" />
               <div className="relative flex items-center gap-3">
                 <Avatar className="size-12 ring-2 ring-white/30">
@@ -154,7 +149,7 @@ function AppContent() {
                     onClick={() => setCurrentPage(item.id)}
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
                       isActive
-                        ? `bg-gradient-to-r ${item.color} text-white shadow-lg scale-105`
+                        ? `bg-linear-to-r ${item.color} text-white shadow-lg scale-105`
                         : 'text-gray-700 hover:bg-gray-100'
                     }`}
                   >
@@ -173,7 +168,7 @@ function AppContent() {
             <div className="p-4 h-full flex flex-col">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="bg-gradient-to-br from-indigo-600 to-purple-600 p-3 rounded-xl shadow-lg">
+                  <div className="bg-linear-to-br from-indigo-600 to-purple-600 p-3 rounded-xl shadow-lg">
                     <Home className="size-6 text-white" />
                   </div>
                   <h2 className="text-xl font-bold">Menu</h2>
@@ -188,7 +183,7 @@ function AppContent() {
               </div>
 
               {/* User Info Mobile */}
-              <div className="relative overflow-hidden mb-6 p-4 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-lg text-white">
+              <div className="relative overflow-hidden mb-6 p-4 bg-linear-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-lg text-white">
                 <div className="absolute top-0 right-0 -mt-2 -mr-2 size-24 bg-white/10 rounded-full blur-2xl" />
                 <div className="relative flex items-center gap-3">
                   <Avatar className="size-14 ring-4 ring-white/30">
@@ -225,7 +220,7 @@ function AppContent() {
                       }}
                       className={`w-full flex items-center gap-3 px-4 py-4 rounded-xl transition-all ${
                         isActive
-                          ? `bg-gradient-to-r ${item.color} text-white shadow-lg`
+                          ? `bg-linear-to-r ${item.color} text-white shadow-lg`
                           : 'text-gray-700 hover:bg-gray-100'
                       }`}
                     >
@@ -257,7 +252,7 @@ function AppContent() {
                 key={item.id}
                 onClick={() => setCurrentPage(item.id)}
                 className={`flex flex-col items-center gap-1 py-2.5 px-1 rounded-xl transition-all ${
-                  isActive ? `bg-gradient-to-br ${item.color} text-white shadow-lg scale-105` : 'text-gray-600'
+                  isActive ? `bg-linear-to-br ${item.color} text-white shadow-lg scale-105` : 'text-gray-600'
                 }`}
               >
                 <Icon className="size-5" />

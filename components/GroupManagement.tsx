@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
@@ -17,7 +18,7 @@ import {
   Link as LinkIcon,
   UserPlus,
   Crown,
-  Settings
+  
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -71,7 +72,7 @@ export function GroupManagement() {
         {!group && (
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-              <Button className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700">
+              <Button className="bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700">
                 <Plus className="size-4 mr-2" />
                 Create Group
               </Button>
@@ -101,10 +102,10 @@ export function GroupManagement() {
       {group ? (
         <div className="space-y-6">
           {/* Group Info Card */}
-          <Card className="border-2 border-indigo-200 bg-gradient-to-br from-indigo-50 to-purple-50">
+          <Card className="border-2 border-indigo-200 bg-linear-to-br from-indigo-50 to-purple-50">
             <CardContent className="p-6">
               <div className="flex items-center gap-4 mb-4">
-                <div className="p-4 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl">
+                <div className="p-4 bg-linear-to-br from-indigo-600 to-purple-600 rounded-2xl">
                   <Users className="size-8 text-white" />
                 </div>
                 <div className="flex-1">
@@ -209,12 +210,12 @@ export function GroupManagement() {
                 return (
                   <div
                     key={user.id}
-                    className="flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-200 transition-all"
+                    className="flex items-center justify-between p-4 rounded-xl bg-linear-to-r from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-200 transition-all"
                   >
                     <div className="flex items-center gap-3">
                       <Avatar className="size-12 ring-2 ring-white">
                         <AvatarImage src={user.profilePicture} />
-                        <AvatarFallback className="bg-gradient-to-br from-indigo-500 to-purple-500 text-white">
+                        <AvatarFallback className="bg-linear-to-br from-indigo-500 to-purple-500 text-white">
                           {user.name.charAt(0)}
                         </AvatarFallback>
                       </Avatar>
@@ -254,7 +255,7 @@ export function GroupManagement() {
             <h3 className="text-xl mb-2">No Group Yet</h3>
             <p className="text-gray-600 mb-6">Create or join a group to start managing with roommates</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button onClick={() => setOpen(true)} className="bg-gradient-to-r from-indigo-600 to-purple-600">
+              <Button onClick={() => setOpen(true)} className="bg-linear-to-r from-indigo-600 to-purple-600">
                 <Plus className="size-4 mr-2" />
                 Create Group
               </Button>
