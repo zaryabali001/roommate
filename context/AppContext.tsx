@@ -100,12 +100,12 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const settleExpense = (expenseId: string, userId: string) => {
     setExpenses(expenses.map(expense => {
       if (expense.id === expenseId) {
-        const updatedSplitDetails = expense.splitDetails.map((split: { userId: string; }) =>
+        const updatedSplitDetails = expense.splitDetails.map((split) =>
           split.userId === userId
             ? { ...split, paid: true, paidDate: new Date() }
             : split
         );
-        const allPaid = updatedSplitDetails.every((split: { paid: any; }) => split.paid);
+        const allPaid = updatedSplitDetails.every((split) => split.paid);
         return { ...expense, splitDetails: updatedSplitDetails, settled: allPaid };
       }
       return expense;
