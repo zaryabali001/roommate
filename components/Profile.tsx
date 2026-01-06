@@ -3,12 +3,11 @@ import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import { Avatar, AvatarFallback } from './ui/avatar';
 import { Badge } from './ui/badge';
 import { Label } from './ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { 
-  User as UserIcon, 
   Mail, 
   Phone, 
   Home, 
@@ -48,7 +47,6 @@ export function Profile() {
         <CardContent className="pt-6">
           <div className="flex flex-col items-center text-center space-y-4">
             <Avatar className="size-32">
-              <AvatarImage src={currentUser.profilePicture} />
               <AvatarFallback className="text-4xl">{currentUser.name.charAt(0)}</AvatarFallback>
             </Avatar>
             <div>
@@ -82,7 +80,7 @@ export function Profile() {
                 <SelectItem value="Out">
                   <div className="flex items-center gap-2">
                     <div className="size-2 rounded-full bg-orange-600" />
-                    Out of Hostel
+                    Out of Hostel                                                                                   
                   </div>
                 </SelectItem>
                 <SelectItem value="On-Leave">

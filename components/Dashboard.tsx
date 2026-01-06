@@ -2,7 +2,7 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
 import { Card, CardContent, CardTitle } from './ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import { Avatar, AvatarFallback } from './ui/avatar';
 import { Badge } from './ui/badge';
 import { Progress } from './ui/progress';
 import { 
@@ -76,7 +76,6 @@ export function Dashboard() {
               <p className="text-white/90">Here's what's happening today</p>
             </div>
             <Avatar className="size-16 md:size-20 ring-4 ring-white/30">
-              <AvatarImage src={currentUser?.profilePicture} />
               <AvatarFallback className="bg-white/20 backdrop-blur text-white text-2xl">
                 {currentUser?.name?.charAt(0) || 'U'}
               </AvatarFallback>
@@ -180,7 +179,6 @@ export function Dashboard() {
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
                   <Avatar className="size-16 md:size-20 ring-4 ring-emerald-100">
-                    <AvatarImage src={currentTurnUser.profilePicture} />
                     <AvatarFallback className="bg-linear-to-br from-emerald-600 to-emerald-700 text-white text-xl">
                       {currentTurnUser.name?.charAt(0) || 'U'}
                     </AvatarFallback>
@@ -231,7 +229,6 @@ export function Dashboard() {
                 <div key={user.id} className="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-cyan-50 transition-all">
                   <div className="flex items-center gap-3">
                     <Avatar className="size-10 ring-2 ring-white">
-                      <AvatarImage src={user.profilePicture || ''} />
                       <AvatarFallback className="bg-linear-to-br from-cyan-600 to-cyan-700 text-white">
                         {String(user.name).charAt(0)}
                       </AvatarFallback>

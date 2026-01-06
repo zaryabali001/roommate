@@ -214,7 +214,6 @@ export function GroupManagement() {
                   >
                     <div className="flex items-center gap-3">
                       <Avatar className="size-12 ring-2 ring-white">
-                        <AvatarImage src={user.profilePicture} />
                         <AvatarFallback className="bg-linear-to-br from-indigo-500 to-purple-500 text-white">
                           {user.name.charAt(0)}
                         </AvatarFallback>

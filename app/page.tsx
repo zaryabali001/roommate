@@ -120,7 +120,6 @@ function AppContent() {
               <div className="absolute top-0 right-0 -mt-2 -mr-2 size-20 bg-white/10 rounded-full blur-2xl" />
               <div className="relative flex items-center gap-3">
                 <Avatar className="size-12 ring-2 ring-white/30">
-                  <AvatarImage src={currentUser?.profilePicture} />
                   <AvatarFallback className="bg-white/20 text-white">
                     {currentUser?.name.charAt(0)}
                   </AvatarFallback>
@@ -187,7 +186,6 @@ function AppContent() {
                 <div className="absolute top-0 right-0 -mt-2 -mr-2 size-24 bg-white/10 rounded-full blur-2xl" />
                 <div className="relative flex items-center gap-3">
                   <Avatar className="size-14 ring-4 ring-white/30">
-                    <AvatarImage src={currentUser?.profilePicture} />
                     <AvatarFallback className="bg-white/20 text-white text-lg">
                       {currentUser?.name.charAt(0)}
                     </AvatarFallback>

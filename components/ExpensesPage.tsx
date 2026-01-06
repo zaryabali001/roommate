@@ -170,7 +170,6 @@ export function ExpensesPage() {
                 <div key={split.userId} className="flex items-center justify-between text-sm">
                   <div className="flex items-center gap-2">
                     <Avatar className="size-6">
-                      <AvatarImage src={user?.profilePicture} />
                       <AvatarFallback>{user?.name.charAt(0)}</AvatarFallback>
                     </Avatar>
                     <span>{user?.name}</span>
@@ -287,7 +286,6 @@ export function ExpensesPage() {
                       />
                       <Label htmlFor={`split-${user.id}`} className="text-sm flex items-center gap-2">
                         <Avatar className="size-6">
-                          <AvatarImage src={user.profilePicture} />
                           <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
                         </Avatar>
                         {user.name}
@@ -427,7 +425,6 @@ export function ExpensesPage() {
                 <div key={user.id} className="flex items-center justify-between p-3 border rounded-lg">
                   <div className="flex items-center gap-3">
                     <Avatar>
-                      <AvatarImage src={user.profilePicture} />
                       <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
                     </Avatar>
                     <span>{user.name}</span>

@@ -7,17 +7,16 @@ import { Input } from './ui/input';
 import { Checkbox } from './ui/checkbox';
 import { Badge } from './ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import { Avatar, AvatarFallback } from './ui/avatar';
 import { 
   Plus, 
   ShoppingCart, 
-  Check,
-  Trash2
+  Check
 } from 'lucide-react';
 import { toast } from 'sonner';
 
 export function ShoppingList() {
-  const { shoppingItems, users, currentUser, addShoppingItem, toggleShoppingItem } = useApp();
+  const { shoppingItems, users, addShoppingItem, toggleShoppingItem } = useApp();
   const [open, setOpen] = useState(false);
   const [itemName, setItemName] = useState('');
 
@@ -164,7 +163,6 @@ export function ShoppingList() {
                       <p className="line-through text-gray-600">{item.name}</p>
                       <div className="flex items-center gap-2 mt-1">
                         <Avatar className="size-5">
-                          <AvatarImage src={purchasedBy?.profilePicture} />
                           <AvatarFallback className="text-xs">
                             {purchasedBy?.name.charAt(0)}
                           </AvatarFallback>

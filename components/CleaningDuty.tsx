@@ -3,7 +3,7 @@
 import { useApp } from '../context/AppContext';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import { Avatar, AvatarFallback } from './ui/avatar';
 import { Badge } from './ui/badge';
 import { Progress } from './ui/progress';
 import { 
@@ -90,7 +90,6 @@ export function CleaningDuty() {
               {currentTurnUser && (
                 <>
                   <Avatar className="size-20">
-                    <AvatarImage src={currentTurnUser.profilePicture} />
                     <AvatarFallback>{currentTurnUser.name.charAt(0)}</AvatarFallback>
                   </Avatar>
                   <div>
@@ -197,7 +196,6 @@ export function CleaningDuty() {
                     <span className="text-sm">{index + 1}</span>
                   </div>
                   <Avatar>
-                    <AvatarImage src={user.profilePicture} />
                     <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
                   </Avatar>
                   <div className="flex-1">
@@ -233,7 +231,6 @@ export function CleaningDuty() {
                 <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
                   <div className="flex items-center gap-3">
                     <Avatar className="size-10">
-                      <AvatarImage src={user?.profilePicture} />
                       <AvatarFallback>
                         <UserIcon className="size-4" />
                       </AvatarFallback>

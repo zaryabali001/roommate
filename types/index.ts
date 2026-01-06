@@ -5,7 +5,6 @@ export interface User {
   phone?: string;
   roomNumber?: string;
   hostelName?: string;
-  profilePicture?: string;
   presenceStatus: 'Present' | 'Out' | 'On-Leave' | 'Do-Not-Disturb';
   role?: 'Admin' | 'Member';
 }
