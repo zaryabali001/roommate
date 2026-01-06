@@ -121,7 +121,7 @@ export function ShoppingList() {
                   >
                     <Checkbox
                       checked={item.purchased}
-                      onCheckedChange={() => handleToggle(item.id)}
+                      onCheckedChange={() => typeof item.id === 'string' && handleToggle(item.id)}
                     />
                     <div className="flex-1">
                       <p>{item.name}</p>
@@ -148,7 +148,7 @@ export function ShoppingList() {
           </CardHeader>
           <CardContent>
             <div className="space-y-2">
-              {purchasedItems.map((item: { purchasedBy: any; id: React.Key | null | undefined; purchased: any; name: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | null | undefined; purchasedDate: string | number | Date; }) => {
+              {purchasedItems.map((item) => {
                 const purchasedBy = users.find((u: { id: any; }) => u.id === item.purchasedBy);
                 
                 return (
@@ -158,7 +158,7 @@ export function ShoppingList() {
                   >
                     <Checkbox
                       checked={item.purchased}
-                      onCheckedChange={() => handleToggle(item.id)}
+                      onCheckedChange={() => typeof item.id === 'string' && handleToggle(item.id)}
                     />
                     <div className="flex-1">
                       <p className="line-through text-gray-600">{item.name}</p>

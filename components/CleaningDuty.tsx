@@ -81,7 +81,7 @@ export function CleaningDuty() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Sparkles className="size-5" />
-            Today's Turn
+            Today&apos;s Turn
           </CardTitle>
         </CardHeader>
         <CardContent>

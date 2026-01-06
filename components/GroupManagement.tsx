@@ -203,7 +203,7 @@ export function GroupManagement() {
               <CardTitle>Members</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              {users.map((user: { id: React.Key | null | undefined; profilePicture: any; name: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | null | undefined; email: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | null | undefined; presenceStatus: string; }) => {
+              {users.map((user) => {
                 const member = group.members.find((m: { userId: any; }) => m.userId === user.id);
                 const isAdmin = member?.role === 'Admin';
                 

@@ -160,11 +160,11 @@ export function Profile() {
         <CardContent className="space-y-3">
           <Button variant="outline" className="w-full justify-start" onClick={() => toast.success('Coming late notification sent!')}>
             <CheckCircle className="size-4 mr-2" />
-            I'm Coming Late
+            I&apos;m Coming Late
           </Button>
           <Button variant="outline" className="w-full justify-start" onClick={() => toast.success('On the way notification sent!')}>
             <CheckCircle className="size-4 mr-2" />
-            I'm On The Way
+            I&apos;m On The Way
           </Button>
           <Button variant="outline" className="w-full justify-start" onClick={() => toast.success('Emergency alert sent!')}>
             <CheckCircle className="size-4 mr-2" />

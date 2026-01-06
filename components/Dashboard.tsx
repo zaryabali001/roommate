@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-explicit-any, react/no-unescaped-entities */
 import React from 'react';
 import { useApp } from '../context/AppContext';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Card, CardContent, CardTitle } from './ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Badge } from './ui/badge';
 import { Progress } from './ui/progress';
@@ -30,8 +30,8 @@ export function Dashboard() {
   } = useApp();
 
   // Calculate statistics
-  const personalTodos = todos.filter((t: { groupId: any; completed: any; }) => !t.groupId && !t.completed);
-  const groupTodos = todos.filter((t: { groupId: any; completed: any; }) => t.groupId && !t.completed);
+  const personalTodos = todos.filter((t) => !t.groupId && !t.completed);
+  const groupTodos = todos.filter((t) => t.groupId && !t.completed);
   const completedTodos = todos.filter((t: { completed: any; }) => t.completed).length;
   const totalTodos = todos.length;
   const completionRate = totalTodos > 0 ? (completedTodos / totalTodos) * 100 : 0;
@@ -64,24 +64,21 @@ export function Dashboard() {
   const netBalance = totalOwedToMe - totalOwed;
 
   return (
-    <div className="p-4 md:p-6 space-y-6 bg-gradient-to-br from-gray-50 via-white to-indigo-50/30 min-h-screen">
+    <div className="p-4 md:p-6 space-y-6 bg-linear-to-br from-slate-50 via-white to-slate-100 min-h-screen">
       {/* Welcome Section */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 p-6 md:p-8 text-white">
-        <div className="absolute top-0 right-0 -mt-4 -mr-4 size-32 bg-white/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 -mb-4 -ml-4 size-40 bg-white/10 rounded-full blur-3xl" />
+      <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-blue-600 to-blue-700 p-6 md:p-8 text-white">
+        <div className="absolute top-0 right-0 -mt-4 -mr-4 size-32 bg-white/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 -mb-4 -ml-4 size-40 bg-white/5 rounded-full blur-3xl" />
         <div className="relative">
           <div className="flex items-center justify-between mb-4">
             <div>
               <p className="text-white/80 text-sm mb-1">Welcome back,</p>
-              <h1 className="text-3xl md:text-4xl text-white mb-2">
-                {currentUser?.name?.split(' ')[0]}! 👋
-              </h1>
               <p className="text-white/90">Here's what's happening today</p>
             </div>
             <Avatar className="size-16 md:size-20 ring-4 ring-white/30">
               <AvatarImage src={currentUser?.profilePicture} />
               <AvatarFallback className="bg-white/20 backdrop-blur text-white text-2xl">
-                {currentUser?.name?.charAt(0)}
+                {currentUser?.name?.charAt(0) || 'U'}
               </AvatarFallback>
             </Avatar>
           </div>
@@ -96,7 +93,7 @@ export function Dashboard() {
 
       {/* Quick Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-        <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-br from-white to-green-50">
+        <Card className="border-0 shadow-md hover:shadow-lg transition-shadow bg-white">
           <CardContent className="p-4 md:p-6">
             <div className="flex items-center justify-between mb-3">
               <div className="p-2 md:p-3 bg-green-100 rounded-xl">
@@ -120,7 +117,7 @@ export function Dashboard() {
           </CardContent>
         </Card>
 
-        <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-br from-white to-blue-50">
+        <Card className="border-0 shadow-md hover:shadow-lg transition-shadow bg-white">
           <CardContent className="p-4 md:p-6">
             <div className="flex items-center justify-between mb-3">
               <div className="p-2 md:p-3 bg-blue-100 rounded-xl">
@@ -135,22 +132,22 @@ export function Dashboard() {
           </CardContent>
         </Card>
 
-        <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-br from-white to-orange-50">
+        <Card className="border-0 shadow-md hover:shadow-lg transition-shadow bg-white">
           <CardContent className="p-4 md:p-6">
             <div className="flex items-center justify-between mb-3">
-              <div className="p-2 md:p-3 bg-orange-100 rounded-xl">
-                <ShoppingCart className="size-4 md:size-5 text-orange-600" />
+              <div className="p-2 md:p-3 bg-purple-100 rounded-xl">
+                <ShoppingCart className="size-4 md:size-5 text-purple-600" />
               </div>
             </div>
             <p className="text-xs md:text-sm text-gray-600 mb-1">Shopping</p>
-            <div className="text-xl md:text-2xl font-bold text-orange-600">
+            <div className="text-xl md:text-2xl font-bold text-purple-600">
               {unpurchasedItems.length}
             </div>
             <p className="text-xs text-gray-500 mt-1">Items pending</p>
           </CardContent>
         </Card>
 
-        <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow bg-gradient-to-br from-white to-red-50">
+        <Card className="border-0 shadow-md hover:shadow-lg transition-shadow bg-white">
           <CardContent className="p-4 md:p-6">
             <div className="flex items-center justify-between mb-3">
               <div className="p-2 md:p-3 bg-red-100 rounded-xl">
@@ -170,9 +167,9 @@ export function Dashboard() {
 
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
-        {/* Today's Cleaning Duty */}
-        <Card className="border-0 shadow-lg overflow-hidden">
-          <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-4">
+        {/* Today&apos;s Cleaning Duty */}
+        <Card className="border-0 shadow-md overflow-hidden">
+          <div className="bg-linear-to-r from-emerald-600 to-emerald-700 p-4">
             <CardTitle className="flex items-center gap-2 text-white">
               <Sparkles className="size-5" />
               Today's Cleaning Duty
@@ -182,10 +179,10 @@ export function Dashboard() {
             {currentTurnUser ? (
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <Avatar className="size-16 md:size-20 ring-4 ring-purple-100">
+                  <Avatar className="size-16 md:size-20 ring-4 ring-emerald-100">
                     <AvatarImage src={currentTurnUser.profilePicture} />
-                    <AvatarFallback className="bg-gradient-to-br from-purple-500 to-pink-500 text-white text-xl">
-                      {currentTurnUser.name.charAt(0)}
+                    <AvatarFallback className="bg-linear-to-br from-emerald-600 to-emerald-700 text-white text-xl">
+                      {currentTurnUser.name?.charAt(0) || 'U'}
                     </AvatarFallback>
                   </Avatar>
                   <div className="flex-1">
@@ -200,11 +197,11 @@ export function Dashboard() {
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="p-3 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl">
+                  <div className="p-3 bg-emerald-50 rounded-xl">
                     <p className="text-xs text-gray-600 mb-1">Frequency</p>
                     <p className="text-sm font-medium">{cleaningDuty?.frequency}</p>
                   </div>
-                  <div className="p-3 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl">
+                  <div className="p-3 bg-emerald-50 rounded-xl">
                     <p className="text-xs text-gray-600 mb-1">Last Cleaned</p>
                     <p className="text-sm font-medium">
                       {cleaningDuty?.lastCleanedDate 
@@ -221,8 +218,8 @@ export function Dashboard() {
         </Card>
 
         {/* Roommates Status */}
-        <Card className="border-0 shadow-lg overflow-hidden">
-          <div className="bg-gradient-to-r from-blue-500 to-cyan-500 p-4">
+        <Card className="border-0 shadow-md overflow-hidden">
+          <div className="bg-linear-to-r from-cyan-600 to-cyan-700 p-4">
             <CardTitle className="flex items-center gap-2 text-white">
               <Users className="size-5" />
               Roommates
@@ -230,13 +227,13 @@ export function Dashboard() {
           </div>
           <CardContent className="p-4 md:p-6">
             <div className="space-y-3">
-              {users.map((user: { id: React.Key | null | undefined; profilePicture: any; name: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | null | undefined; role: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | null | undefined; presenceStatus: string; }) => (
-                <div key={user.id} className="flex items-center justify-between p-3 rounded-xl bg-linear-to-r from-gray-50 to-blue-50 hover:from-blue-50 hover:to-cyan-50 transition-all">
+              {users.map((user) => (
+                <div key={user.id} className="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-cyan-50 transition-all">
                   <div className="flex items-center gap-3">
                     <Avatar className="size-10 ring-2 ring-white">
-                      <AvatarImage src={user.profilePicture} />
-                      <AvatarFallback className="bg-linear-to-br from-blue-500 to-cyan-500 text-white">
-                        {user.name.charAt(0)}
+                      <AvatarImage src={user.profilePicture || ''} />
+                      <AvatarFallback className="bg-linear-to-br from-cyan-600 to-cyan-700 text-white">
+                        {String(user.name).charAt(0)}
                       </AvatarFallback>
                     </Avatar>
                     <div>
@@ -257,8 +254,8 @@ export function Dashboard() {
         </Card>
 
         {/* Upcoming Tasks */}
-        <Card className="border-0 shadow-lg overflow-hidden">
-          <div className="bg-gradient-to-r from-orange-500 to-amber-500 p-4">
+        <Card className="border-0 shadow-md overflow-hidden">
+          <div className="bg-linear-to-r from-amber-600 to-amber-700 p-4">
             <CardTitle className="flex items-center gap-2 text-white">
               <Calendar className="size-5" />
               Upcoming Tasks
@@ -267,7 +264,7 @@ export function Dashboard() {
           <CardContent className="p-4 md:p-6">
             <div className="space-y-3">
               {[...personalTodos, ...groupTodos].slice(0, 5).map(todo => (
-                <div key={todo.id} className="flex items-start justify-between p-3 rounded-xl bg-gradient-to-r from-orange-50 to-amber-50">
+                <div key={todo.id} className="flex items-start justify-between p-3 rounded-xl bg-amber-50">
                   <div className="flex-1">
                     <p className="text-sm font-medium">{todo.title}</p>
                     {todo.dueDate && (
@@ -292,8 +289,8 @@ export function Dashboard() {
         </Card>
 
         {/* Recent Expenses */}
-        <Card className="border-0 shadow-lg overflow-hidden">
-          <div className="bg-gradient-to-r from-green-500 to-emerald-500 p-4">
+        <Card className="border-0 shadow-md overflow-hidden">
+          <div className="bg-linear-to-r from-teal-600 to-teal-700 p-4">
             <CardTitle className="flex items-center gap-2 text-white">
               <TrendingUp className="size-5" />
               Recent Expenses
@@ -301,12 +298,12 @@ export function Dashboard() {
           </div>
           <CardContent className="p-4 md:p-6">
             <div className="space-y-3">
-              {expenses.slice(0, 5).map((expense: { paidBy: any; splitDetails: any[]; id: React.Key | null | undefined; title: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | null | undefined; date: string | number | Date; amount: { toLocaleString: () => string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | null | undefined; }; }) => {
-                const paidBy = users.find((u: { id: any; }) => u.id === expense.paidBy);
-                const mySplit = expense.splitDetails.find((s: { userId: any; }) => s.userId === currentUser?.id);
+              {expenses.slice(0, 5).map((expense) => {
+                const paidBy = users.find((u) => u.id === expense.paidBy);
+                const mySplit = expense.splitDetails.find((s: any) => s.userId === currentUser?.id);
                 
                 return (
-                  <div key={expense.id} className="flex items-start justify-between p-3 rounded-xl bg-gradient-to-r from-green-50 to-emerald-50">
+                  <div key={expense.id} className="flex items-start justify-between p-3 rounded-xl bg-teal-50">
                     <div className="flex-1">
                       <p className="text-sm font-medium">{expense.title}</p>
                       <p className="text-xs text-gray-500 mt-1">
